@@ -1,0 +1,2 @@
+# ScreenQRCodeReaderCSharp
+Windows平台解析屏幕二维码
