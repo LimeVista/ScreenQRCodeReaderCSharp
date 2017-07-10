@@ -1,0 +1,11 @@
+H:\C#\QRCode\ScreenUtils\bin\Release\ScreenUtils.dll
+H:\C#\QRCode\ScreenUtils\bin\Release\ScreenUtils.pdb
+H:\C#\QRCode\ScreenUtils\bin\Release\zxing.dll
+H:\C#\QRCode\ScreenUtils\bin\Release\zxing.presentation.dll
+H:\C#\QRCode\ScreenUtils\bin\Release\zxing.pdb
+H:\C#\QRCode\ScreenUtils\bin\Release\zxing.xml
+H:\C#\QRCode\ScreenUtils\bin\Release\zxing.presentation.pdb
+H:\C#\QRCode\ScreenUtils\bin\Release\zxing.presentation.xml
+H:\C#\QRCode\ScreenUtils\obj\Release\ScreenUtils.dll
+H:\C#\QRCode\ScreenUtils\obj\Release\ScreenUtils.pdb
+H:\C#\QRCode\ScreenUtils\obj\Release\Utils.csprojResolveAssemblyReference.cache

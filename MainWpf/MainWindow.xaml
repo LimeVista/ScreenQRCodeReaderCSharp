@@ -1,0 +1,75 @@
+﻿<Window x:Class="MainWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainWpf"
+        mc:Ignorable="d"
+        WindowStyle="None"
+         BorderThickness="8"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="360" Width="521" AllowsTransparency="True" 
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Window.Effect>
+        <DropShadowEffect BlurRadius="8" Color="#2888" Direction="315" ShadowDepth="2"/>
+    </Window.Effect>
+    <Grid Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" MinHeight="36"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" MaxHeight="1" MinHeight="1"/>
+            <RowDefinition Height="40" MinHeight="36"/>
+        </Grid.RowDefinitions>
+        <Border Background="#0288D1" Grid.Row="0"/>
+        <Grid Grid.Row="0" Grid.Column="0" Name="topGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" Source="Res/qr_code_128.png" Stretch="Uniform" Margin="4"  />
+            <Label Content="屏幕二维码识别[李振宇]" Grid.Row="0" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" />
+            <Button Content="" Grid.Row="0" Grid.Column="2" Name="minSizeBtn" Margin="4" Click="minSizeBtn_Click" Style="{StaticResource TitleImageButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Res/minus.png"/>
+                </Button.Background>
+            </Button>
+            <Button Content="" Grid.Row="0" Grid.Column="3" Name="exitBtn"  Click="exitBtn_Click" Margin="4" Style="{StaticResource TitleImageButtonStyle}">
+                <Button.Background>
+                    <ImageBrush ImageSource="Res/close.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0" x:Name="midGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="1" MaxWidth="1" MinWidth="1"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" Margin="16" Name="qrImage" Stretch="Uniform" />
+            <Border Grid.Row="0" Grid.Column="1" Background="#3333" Margin="0,16"/>
+            <TextBox Grid.Row="0" Grid.Column="2" Margin="16" Name="qrLabel" 
+                     Text="{DynamicResource TipText}" 
+                     TextWrapping="Wrap" Padding="4" />
+        </Grid>
+        <Border Grid.Row="2" Grid.Column="0" Background="#3333"/>
+        <Grid x:Name="toolGrid" Grid.Row="3" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16" MinWidth="16" MaxWidth="16"/>
+                <ColumnDefinition Width="40" MinWidth="36"/>
+                <ColumnDefinition Width="56" MinWidth="56"/>
+                <ColumnDefinition Width="40" MinWidth="36"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40" MinWidth="36"/>
+                <ColumnDefinition Width="40" MinWidth="40"/>
+                <ColumnDefinition Width="72" MinWidth="72"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="保存" Grid.Row="0" Grid.Column="1" x:Name="saveQRBtn" Click="saveQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
+            <Button Content="向前" Grid.Row="0" Grid.Column="3" x:Name="previousQRBtn" Click="previousQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
+            <Label Content="还未进行扫描" Grid.Row="0" Grid.Column="4" x:Name="infolabel" Margin="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button Content="向后" Grid.Row="0" Grid.Column="5" x:Name="nextQRBtn" Click="nextQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
+            <Button Content="扫描二维码" Grid.Row="0" Grid.Column="7" x:Name="scanQRBtn" Click="scanQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
+        </Grid>
+    </Grid>
+</Window>
