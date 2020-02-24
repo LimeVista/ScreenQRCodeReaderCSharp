@@ -9,7 +9,7 @@
          BorderThickness="8"
         WindowStartupLocation="CenterScreen"
         Title="MainWindow" Height="360" Width="521" AllowsTransparency="True" 
-        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        MouseLeftButtonDown="WindowMouseLeftButtonOnDown">
     <Window.Effect>
         <DropShadowEffect BlurRadius="8" Color="#2888" Direction="315" ShadowDepth="2"/>
     </Window.Effect>
@@ -28,16 +28,16 @@
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" Source="Res/qr_code_128.png" Stretch="Uniform" Margin="4"  />
-            <Label Content="屏幕二维码识别[李振宇]" Grid.Row="0" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" />
-            <Button Content="" Grid.Row="0" Grid.Column="2" Name="minSizeBtn" Margin="4" Click="minSizeBtn_Click" Style="{StaticResource TitleImageButtonStyle}">
+            <Image Grid.Row="0" Grid.Column="0" Source="Res/ic_logo.png" Stretch="Uniform" Margin="4"  />
+            <Label Content="屏幕二维码识别-LimeVista" Grid.Row="0" Grid.Column="1" Foreground="White" VerticalContentAlignment="Center" />
+            <Button Content="" Grid.Row="0" Grid.Column="2" Name="minSizeBtn" Margin="4" Click="MinSizeButtonOnClick" Style="{StaticResource TitleImageButtonStyle}">
                 <Button.Background>
-                    <ImageBrush ImageSource="Res/minus.png"/>
+                    <ImageBrush ImageSource="Res/img_minus.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="" Grid.Row="0" Grid.Column="3" Name="exitBtn"  Click="exitBtn_Click" Margin="4" Style="{StaticResource TitleImageButtonStyle}">
+            <Button Content="" Grid.Row="0" Grid.Column="3" Name="exitBtn"  Click="ExitButtonOnClick" Margin="4" Style="{StaticResource TitleImageButtonStyle}">
                 <Button.Background>
-                    <ImageBrush ImageSource="Res/close.png"/>
+                    <ImageBrush ImageSource="Res/ic_close.png"/>
                 </Button.Background>
             </Button>
         </Grid>
@@ -47,9 +47,9 @@
                 <ColumnDefinition Width="1" MaxWidth="1" MinWidth="1"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" Margin="16" Name="qrImage" Stretch="Uniform" />
+            <Image Grid.Row="0" Grid.Column="0" Margin="16" Name="QRImage" Stretch="Uniform" />
             <Border Grid.Row="0" Grid.Column="1" Background="#3333" Margin="0,16"/>
-            <TextBox Grid.Row="0" Grid.Column="2" Margin="16" Name="qrLabel" 
+            <TextBox Grid.Row="0" Grid.Column="2" Margin="16" Name="QRLabel" 
                      Text="{DynamicResource TipText}" 
                      TextWrapping="Wrap" Padding="4" />
         </Grid>
@@ -65,11 +65,11 @@
                 <ColumnDefinition Width="40" MinWidth="40"/>
                 <ColumnDefinition Width="72" MinWidth="72"/>
             </Grid.ColumnDefinitions>
-            <Button Content="保存" Grid.Row="0" Grid.Column="1" x:Name="saveQRBtn" Click="saveQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
-            <Button Content="向前" Grid.Row="0" Grid.Column="3" x:Name="previousQRBtn" Click="previousQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
-            <Label Content="还未进行扫描" Grid.Row="0" Grid.Column="4" x:Name="infolabel" Margin="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Button Content="向后" Grid.Row="0" Grid.Column="5" x:Name="nextQRBtn" Click="nextQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
-            <Button Content="扫描二维码" Grid.Row="0" Grid.Column="7" x:Name="scanQRBtn" Click="scanQRBtn_Click" Style="{StaticResource ImageButtonStyle}"/>
+            <Button Content="保存" Grid.Row="0" Grid.Column="1" x:Name="SaveQRButton" Click="SaveQRButtonOnClick" Style="{StaticResource ImageButtonStyle}"/>
+            <Button Content="向前" Grid.Row="0" Grid.Column="3" x:Name="PrevQRButton" Click="PrevQRButtonOnClick" Style="{StaticResource ImageButtonStyle}"/>
+            <Label Content="还未进行扫描" Grid.Row="0" Grid.Column="4" x:Name="Infolabel" Margin="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Button Content="向后" Grid.Row="0" Grid.Column="5" x:Name="NextQRButton" Click="NextQRButtonOnClick" Style="{StaticResource ImageButtonStyle}"/>
+            <Button Content="扫描二维码" Grid.Row="0" Grid.Column="7" x:Name="scanQRBtn" Click="ScanQRButtonOnClick" Style="{StaticResource ImageButtonStyle}"/>
         </Grid>
     </Grid>
 </Window>

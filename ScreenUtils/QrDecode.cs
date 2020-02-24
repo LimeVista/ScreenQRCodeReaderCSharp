@@ -9,26 +9,25 @@ using ZXing.Common;
 
 namespace Lime.Utils
 {
-    public class QrDecode
+    /// <summary>
+    /// 解析二维码
+    /// </summary>
+    public class QRDecode
     {
-        private QrDecode() {}
+        private QRDecode() { }
 
         /// <summary>
         /// 二维码解析
         /// </summary>
         /// <param name="bitmap">二维码图片</param>
         /// <returns>return Zxing libary Result</returns>
-        public static Result DecoderResult(Bitmap bitmap) {
+        public static Result DecoderResult(Bitmap bitmap)
+        {
             // create a barcode reader instance
             IBarcodeReader reader = new BarcodeReader();
             reader.Options.CharacterSet = "UTF-8";
             // detect and decode the barcode inside the bitmap
             var result = reader.Decode(bitmap);
-            // do something with the result
-            // if (result != null) {
-            //     txtDecoderType.Text = result.BarcodeFormat.ToString();
-            //     txtDecoderContent.Text = result.Text;
-            // }
             return result;
         }
 
@@ -37,37 +36,47 @@ namespace Lime.Utils
         /// </summary>
         /// <param name="bitmap">二维码图片</param>
         /// <returns>二维码解析结果</returns>
-        public static string Decoder(Bitmap bitmap) {
+        public static string Decoder(Bitmap bitmap)
+        {
             var result = DecoderResult(bitmap);
-            return result == null ? null : result.Text;
+            return result?.Text;
         }
 
         /// <summary>
         /// 多个二维码解析
         /// </summary>
         /// <param name="bitmap">二维码图片</param>
-        /// <returns>return Zxing libary Result</returns>
-        public static Result[] MultipleDecoder(Bitmap bitmap) {
-            IMultipleBarcodeReader reader = new BarcodeReader();
+        /// <returns>二维码解析结果</returns>
+        public static Result[] MultipleDecoder(Bitmap bitmap)
+        {
+            var reader = new BarcodeReader();
             reader.Options.CharacterSet = "UTF-8";
             return reader.DecodeMultiple(bitmap);
         }
 
-        public static List<DecodeResult> MultipleDecoderCustom(Bitmap bitmap) {
+        /// <summary>
+        /// 多个二维码解析，自定义版本
+        /// </summary>
+        /// <param name="bitmap">二维码图片</param>
+        /// <returns>二维码解析结果</returns>
+        public static List<DecodeResult> MultipleDecoderCustom(Bitmap bitmap)
+        {
             var res = MultipleDecoder(bitmap);
             if (res == null) return null;
             List<DecodeResult> drs = new List<DecodeResult>(res.Length);
-            foreach (var r in res) {
-                Image img = ImageCorp.Corp(bitmap, r.ResultPoints, r.Text.Length);
-                drs.Add(new DecodeResult(img, r.Text));
+            foreach (var r in res)
+            {
+                var image = ImageCorp.Corp(bitmap, r.ResultPoints, r.Text.Length);
+                drs.Add(new DecodeResult(image, r.Text));
             }
             return drs;
         }
 
-        public static Result DecoderHybrid(Bitmap bitmap) {
+        public static Result DecoderHybrid(Bitmap bitmap)
+        {
             //提高识别率
-            LuminanceSource source = new BitmapLuminanceSource(bitmap);
-            BinaryBitmap bmp = new BinaryBitmap(new HybridBinarizer(source));
+            var source = new BitmapLuminanceSource(bitmap);
+            var bmp = new BinaryBitmap(new HybridBinarizer(source));
             return new MultiFormatReader().decode(bmp);
         }
     }

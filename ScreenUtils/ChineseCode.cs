@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Lime.Utils
 {
     public class ChineseCode
     {
-        public static bool IsChineseCharacter(string chineseStr) {
-
-            foreach (char c in chineseStr) {
+        /// <summary>
+        /// 判断是否为 Unicode 编码，除了"�"这个字符，该字符另行处理
+        /// </summary>
+        /// <param name="chineseStr">输入串</param>
+        /// <returns>是否为 Unicode 编码</returns>
+        public static bool IsChineseCharacter(string chineseStr)
+        {
+            foreach (char c in chineseStr)
+            {
                 //是否是Unicode编码,除了"�"这个字符.这个字符要另外处理  
-                if ((c >= '\u0000' && c < '\uFFFD') || ((c > '\uFFFD' && c < '\uFFFF'))) {
+                if ((c >= '\u0000' && c < '\uFFFD') || ((c > '\uFFFD' && c < '\uFFFF')))
+                {
                     continue;
                 }
                 else
@@ -21,19 +24,24 @@ namespace Lime.Utils
             return true;
         }
 
-        public static bool IsSpecialCharacter(string str) {
-            //是"�"这个特殊字符的乱码情况  
-            if (str.Contains("ï¿½")) {
-                return true;
-            }
-            return false;
-        }
+        /// <summary>
+        /// 判断特殊字符"�"
+        /// </summary>
+        /// <param name="str">输入串</param>
+        /// <returns>是否存在"�"</returns>
+        public static bool IsSpecialCharacter(string str) => str.Contains("ï¿½");
 
-        public static string Encode(string str) {
+        /// <summary>
+        /// 编码
+        /// </summary>
+        /// <param name="str">字符串</param>
+        /// <returns>编码后的字符串</returns>
+        public static string Encode(string str)
+        {
             bool isCn = IsChineseCharacter(str);
             bool isSC = IsSpecialCharacter(str);
-            isCn = isSC ? true : isCn;
-            if (isCn) {
+            if (isSC || isCn)
+            {
                 byte[] bytes = Encoding.UTF8.GetBytes(str);
                 return Encoding.UTF8.GetString(bytes);
             }
